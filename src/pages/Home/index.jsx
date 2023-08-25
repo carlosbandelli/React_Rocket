@@ -8,6 +8,7 @@ export function Home() {
   const [user, setUser] = useState({name:'', avatar:''});
 
   function handleAddStudent(){
+
     const newStudent = {
       name: studentName,
       time: new Date().toLocaleTimeString("pt-br",{
@@ -17,6 +18,7 @@ export function Home() {
       })
     }
     setStudents(prevState => [...prevState, newStudent]);
+    setStudentName('');
   }
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export function Home() {
         </div>
 
       </header>
-     <input type="text" placeholder="Digite o seu nome..." onChange={e => setStudentName(e.target.value)}/>
+     <input type="text" placeholder="Digite o seu nome..." onChange={e => setStudentName(e.target.value)} value={studentName}/>
      <button type="button" onClick={handleAddStudent}>Adicionar</button>
       {   
       students.map(student => (
